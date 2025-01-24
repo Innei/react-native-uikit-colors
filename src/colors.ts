@@ -111,7 +111,7 @@ export const darkVariants = {
   tertiarySystemGroupedBackground: '44 44 46',
 
   // System Colors
-  systemFill: '120 120 128 36',
+  systemFill: '120 120 128 0.36',
   secondarySystemFill: '120 120 128 0.32',
   tertiarySystemFill: '120 120 128 0.24',
   quaternarySystemFill: '120 120 128 0.19',
