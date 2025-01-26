@@ -56,6 +56,7 @@ const darkPalette = {
   gray5: '44 44 46',
   gray6: '28 28 30',
 }
+
 export const palette = {
   // iOS color palette https://developer.apple.com/design/human-interface-guidelines/color
   light: buildVars(lightPalette),

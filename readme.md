@@ -47,6 +47,25 @@ function App() {
 }
 ```
 
+### 3. Inject TailwindCSS Colors
+
+```tsx
+const RootProviders = ({ children }: { children: ReactNode }) => {
+  useColorScheme() // Observe color scheme changes
+  const currentThemeColors = getCurrentColors()!
+
+  return <View style={[styles.flex, currentThemeColors]}>{children}</View>
+}
+
+// Your App Entry Component
+
+export const App = () => {
+  return <RootProviders>
+    <YourApp />
+  </RootProviders>
+}
+```
+
 ## Usage
 
 ### 1. Using with NativeWind/TailwindCSS
