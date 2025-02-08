@@ -68,8 +68,8 @@ export const lightVariants = {
 
   placeholderText: '199 199 204',
   separator: '84 84 86 0.34',
-  opaqueSeparator: '84 84 86 0.34',
-  nonOpaqueSeparator: '198 198 200',
+  opaqueSeparator: '198 198 200',
+  nonOpaqueSeparator: '84 84 86 0.34',
   link: '0 122 255',
 
   systemBackground: '255 255 255',
@@ -98,9 +98,9 @@ export const darkVariants = {
   // UIKit Colors
 
   placeholderText: '122 122 122',
-  separator: '56 56 58 0.6',
-  opaqueSeparator: '56 56 58 0.6',
-  nonOpaqueSeparator: '84 84 86',
+  separator: '84 84 86 0.6',
+  opaqueSeparator: '56 56 58',
+  nonOpaqueSeparator: '84 84 86 0.6',
   link: '10 132 255',
   systemBackground: '0 0 0',
   secondarySystemBackground: '28 28 30',
