@@ -63,7 +63,7 @@ export const palette = {
   dark: buildVars(darkPalette),
 }
 
-export const lightVariants = {
+export const lightElements = {
   // UIKit Colors
 
   placeholderText: '199 199 204',
@@ -94,7 +94,7 @@ export const lightVariants = {
   tertiaryLabel: '60 60 67 0.3',
   quaternaryLabel: '60 60 67 0.18',
 }
-export const darkVariants = {
+export const darkElements = {
   // UIKit Colors
 
   placeholderText: '122 122 122',
@@ -128,11 +128,11 @@ export const darkVariants = {
 /// Utils
 
 const mergedLightColors = {
-  ...lightVariants,
+  ...lightElements,
   ...lightPalette,
 }
 const mergedDarkColors = {
-  ...darkVariants,
+  ...darkElements,
   ...darkPalette,
 }
 const mergedColors = {
@@ -141,8 +141,8 @@ const mergedColors = {
 }
 
 export const colorVariants = {
-  light: buildVars(lightVariants),
-  dark: buildVars(darkVariants),
+  light: buildVars(lightElements),
+  dark: buildVars(darkElements),
 }
 
 export const useColor = (color: keyof typeof mergedLightColors) => {

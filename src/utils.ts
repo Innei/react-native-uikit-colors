@@ -1,7 +1,7 @@
 import type { StyleProp, ViewStyle } from 'react-native'
 import { Appearance, StyleSheet } from 'react-native'
 
-import { colorVariants, darkVariants, lightVariants, palette } from './colors'
+import { colorVariants, darkElements, lightElements, palette } from './colors'
 
 export const getCurrentColors = () => {
   const colorScheme = Appearance.getColorScheme() || 'light'
@@ -15,7 +15,7 @@ export const getCurrentColors = () => {
 export const getSystemBackgroundColor = () => {
   const colorScheme = Appearance.getColorScheme() || 'light'
 
-  const colors = colorScheme === 'light' ? lightVariants : darkVariants
+  const colors = colorScheme === 'light' ? lightElements : darkElements
   return rgbStringToRgb(colors.systemBackground)
 }
 
