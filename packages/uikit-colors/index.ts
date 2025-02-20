@@ -1,22 +1,4 @@
-import { useColorScheme, vars } from 'nativewind'
-import { useMemo } from 'react'
-import { rgbStringToRgb } from './utils'
-
-// @ts-expect-error
-const IS_DOM = typeof ReactNativeWebView !== 'undefined'
-
-const varPrefix = '--color'
-
-const buildVars = (_vars: Record<string, string>) => {
-  const cssVars = {} as Record<`${typeof varPrefix}-${string}`, string>
-  for (const [key, value] of Object.entries(_vars)) {
-    cssVars[`${varPrefix}-${key}`] = value
-  }
-
-  return IS_DOM ? cssVars : vars(cssVars)
-}
-
-const lightPalette = {
+export const lightPalette = {
   red: '255 59 48',
   orange: '255 149 0',
   yellow: '255 204 0',
@@ -36,7 +18,7 @@ const lightPalette = {
   gray5: '229 229 234',
   gray6: '242 242 247',
 }
-const darkPalette = {
+export const darkPalette = {
   red: '255 69 58',
   orange: '255 175 113',
   yellow: '255 214 10',
@@ -57,15 +39,7 @@ const darkPalette = {
   gray6: '28 28 30',
 }
 
-export const palette = {
-  // iOS color palette https://developer.apple.com/design/human-interface-guidelines/color
-  light: buildVars(lightPalette),
-  dark: buildVars(darkPalette),
-}
-
 export const lightElements = {
-  // UIKit Colors
-
   placeholderText: '199 199 204',
   separator: '84 84 86 0.34',
   opaqueSeparator: '198 198 200',
@@ -95,8 +69,6 @@ export const lightElements = {
   quaternaryLabel: '60 60 67 0.18',
 }
 export const darkElements = {
-  // UIKit Colors
-
   placeholderText: '122 122 122',
   separator: '84 84 86 0.6',
   opaqueSeparator: '56 56 58',
@@ -124,36 +96,3 @@ export const darkElements = {
   tertiaryLabel: '235 235 245 0.3',
   quaternaryLabel: '235 235 245 0.18',
 }
-
-/// Utils
-
-const mergedLightColors = {
-  ...lightElements,
-  ...lightPalette,
-}
-const mergedDarkColors = {
-  ...darkElements,
-  ...darkPalette,
-}
-const mergedColors = {
-  light: mergedLightColors,
-  dark: mergedDarkColors,
-}
-
-export const colorVariants = {
-  light: buildVars(lightElements),
-  dark: buildVars(darkElements),
-}
-
-export const useColor = (color: keyof typeof mergedLightColors) => {
-  const { colorScheme } = useColorScheme()
-  const colors = mergedColors[colorScheme || 'light']
-  return useMemo(() => rgbStringToRgb(colors[color]), [color, colors])
-}
-
-export const useColors = () => {
-  const { colorScheme } = useColorScheme()
-  return mergedColors[colorScheme || 'light']
-}
-
-export type Colors = typeof mergedLightColors

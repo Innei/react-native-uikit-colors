@@ -1,7 +1,7 @@
 import type { StyleProp, ViewStyle } from 'react-native'
 import { Appearance, StyleSheet } from 'react-native'
-
-import { colorVariants, darkElements, lightElements, palette } from './colors'
+import { darkElements, lightElements } from 'apple-uikit-colors'
+import { colorVariants, palette } from './colors'
 
 export const getCurrentColors = () => {
   const colorScheme = Appearance.getColorScheme() || 'light'

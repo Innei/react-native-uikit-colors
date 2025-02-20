@@ -1,0 +1,59 @@
+{
+  "name": "react-native-uikit-colors",
+  "version": "0.2.0",
+  "description": "react native ui kit colors",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./web": {
+      "types": "./dist/web.d.ts",
+      "default": "./dist/web.js",
+      "import": "./dist/web.mjs"
+    },
+    "./tailwind": "./tailwind.ts"
+  },
+  "files": [
+    "dist",
+    "tailwind.ts",
+    "src",
+    "readme.md"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "react-native",
+    "react",
+    "nativewind",
+    "colors",
+    "ui",
+    "theme",
+    "UIKit",
+    "apple",
+    "ios"
+  ],
+  "dependencies": {
+    "apple-uikit-colors": "workspace:*",
+    "tailwindcss-uikit-colors": "workspace:*"
+  },
+  "peerDependencies": {
+    "nativewind": ">=4.1.0",
+    "react": ">=18.0.0",
+    "react-native": ">=0.76.0",
+    "tailwindcss": ">=3.0.0"
+  },
+  "author": "Innei",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "8.3.5",
+    "usehooks-ts": "3.1.0",
+    "@types/react": "18.3.12"
+  }
+}

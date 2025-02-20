@@ -1,0 +1,31 @@
+{
+  "name": "tailwindcss-uikit-colors",
+  "version": "1.0.0",
+  "description": "",
+  "exports": {
+    "./tailwind": "./src/tailwind.ts",
+    "./media.css": "./src/media.css",
+    "./selector.css": "./src/selector.css"
+  },
+  "main": "./src/tailwind.ts",
+  "scripts": {
+    "build": "tsx build-css.ts"
+  },
+  "keywords": [
+    "tailwindcss",
+    "uikit",
+    "colors",
+    "apple",
+    "ios"
+  ],
+  "author": "Innei",
+  "license": "MIT",
+  "dependencies": {
+    "apple-uikit-colors": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.4",
+    "tailwindcss": "^3.4.11",
+    "tsx": "4.19.0"
+  }
+}

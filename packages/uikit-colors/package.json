@@ -1,0 +1,31 @@
+{
+  "name": "apple-uikit-colors",
+  "version": "1.0.0",
+  "description": "Apple UIKit Colors",
+  "publishConfig": {
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+      ".": {
+        "require": "./dist/index.cjs",
+        "import": "./dist/index.js"
+      }
+    }
+  },
+  "main": "./index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "apple",
+    "uikit",
+    "colors"
+  ],
+  "author": "Innei",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "8.3.5"
+  }
+}
