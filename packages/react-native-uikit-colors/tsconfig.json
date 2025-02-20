@@ -10,7 +10,8 @@
     "esModuleInterop": true,
     "jsx": "react-native",
     "lib": [
-      "ESNext"
+      "ESNext",
+      "DOM"
     ],
     "moduleResolution": "node",
     "noEmit": true,
