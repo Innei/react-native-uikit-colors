@@ -66,3 +66,5 @@ export const withUIKit = (config: Config) => {
   }
   return config
 }
+
+export { configColors as colors }
