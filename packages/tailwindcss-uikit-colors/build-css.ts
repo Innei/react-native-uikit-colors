@@ -12,6 +12,11 @@ const cssTargets = {
 
 const cssVariantPrefix = '--color'
 
+const cleanupTargets = () => {
+  fs.unlinkSync(cssTargets.mediaQuery)
+  fs.unlinkSync(cssTargets.selector)
+}
+
 const buildCSSVars = (...vars: Record<string, string>[]) => {
   const cssVars = {} as Record<`${typeof cssVariantPrefix}-${string}`, string>
   for (const v of vars) {
@@ -66,6 +71,7 @@ const writeCSS = (css: string, path: string) => {
   fs.writeFileSync(path, css, { flag: 'a+' })
 }
 
+cleanupTargets()
 writeCSS(
   mergeCSS(
     elementsCSS,
