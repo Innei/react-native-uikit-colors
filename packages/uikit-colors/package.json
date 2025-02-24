@@ -1,6 +1,6 @@
 {
   "name": "apple-uikit-colors",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Apple UIKit Colors",
   "publishConfig": {
     "main": "dist/index.cjs",
