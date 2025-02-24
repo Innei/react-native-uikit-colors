@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-uikit-colors",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "",
   "exports": {
     "./tailwind": "./src/tailwind.ts",
