@@ -1,6 +1,11 @@
 import type { StyleProp, ViewStyle } from 'react-native'
 import { Appearance, StyleSheet } from 'react-native'
-import { darkElements, lightElements } from 'apple-uikit-colors'
+import {
+  darkElements,
+  darkPalette,
+  lightElements,
+  lightPalette,
+} from 'apple-uikit-colors'
 import { colorVariants, palette } from './colors'
 
 export const getCurrentColors = () => {
@@ -16,9 +21,18 @@ export const getSystemBackgroundColor = () => {
   return getColor('systemBackground')
 }
 
-export const getColor = (color: keyof typeof lightElements) => {
+const mergedColorsLight = {
+  ...lightElements,
+  ...lightPalette,
+}
+const mergedColorsDark = {
+  ...darkElements,
+  ...darkPalette,
+}
+
+export const getColor = (color: keyof typeof mergedColorsDark) => {
   const colorScheme = Appearance.getColorScheme() || 'light'
-  const colors = colorScheme === 'light' ? lightElements : darkElements
+  const colors = colorScheme === 'light' ? mergedColorsLight : mergedColorsDark
   return rgbStringToRgb(colors[color])
 }
 
