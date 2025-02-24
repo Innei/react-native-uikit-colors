@@ -13,10 +13,13 @@ export const getCurrentColors = () => {
 }
 
 export const getSystemBackgroundColor = () => {
-  const colorScheme = Appearance.getColorScheme() || 'light'
+  return getColor('systemBackground')
+}
 
+export const getColor = (color: keyof typeof lightElements) => {
+  const colorScheme = Appearance.getColorScheme() || 'light'
   const colors = colorScheme === 'light' ? lightElements : darkElements
-  return rgbStringToRgb(colors.systemBackground)
+  return rgbStringToRgb(colors[color])
 }
 
 export const rgbStringToRgb = (hex: string) => {
