@@ -5,7 +5,8 @@
   "exports": {
     "./tailwind": "./src/tailwind.ts",
     "./media.css": "./src/media.css",
-    "./selector.css": "./src/selector.css"
+    "./selector.css": "./src/selector.css",
+    ".": "./src/tailwind.ts"
   },
   "main": "./src/tailwind.ts",
   "scripts": {
