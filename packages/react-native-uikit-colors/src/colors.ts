@@ -1,6 +1,6 @@
 import { useColorScheme, vars } from 'nativewind'
 import { useMemo } from 'react'
-import { rgbStringToRgb } from './utils'
+import { getCurrentColors, rgbStringToRgb } from './utils'
 import {
   darkElements,
   darkPalette,
@@ -57,6 +57,11 @@ export const useColor = (color: keyof typeof mergedLightColors) => {
 export const useColors = () => {
   const { colorScheme } = useColorScheme()
   return mergedColors[colorScheme || 'light']
+}
+
+export const useCurrentColors = () => {
+  useColorScheme() // Observe color scheme changes
+  return getCurrentColors()
 }
 
 export type Colors = typeof mergedLightColors
