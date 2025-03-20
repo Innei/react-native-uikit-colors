@@ -51,7 +51,7 @@ function App() {
 
 ```tsx
 const RootProviders = ({ children }: { children: ReactNode }) => {
-  const currentThemeColors = useCurrentColors()
+  const currentThemeColors = useCurrentColorsVariants()
 
   return <View style={[styles.flex, currentThemeColors]}>{children}</View>
 }

@@ -1,6 +1,9 @@
 import { useColorScheme, vars } from 'nativewind'
 import { useMemo } from 'react'
-import { getCurrentColors, rgbStringToRgb } from './utils'
+import {
+  getCurrentColors as getCurrentColorsVariants,
+  rgbStringToRgb,
+} from './utils'
 import {
   darkElements,
   darkPalette,
@@ -43,6 +46,21 @@ const mergedColors = {
   dark: mergedDarkColors,
 }
 
+const mergedColorsHex = {
+  light: Object.fromEntries(
+    Object.entries(mergedLightColors).map(([key, value]) => [
+      key,
+      rgbStringToRgb(value),
+    ]),
+  ),
+  dark: Object.fromEntries(
+    Object.entries(mergedDarkColors).map(([key, value]) => [
+      key,
+      rgbStringToRgb(value),
+    ]),
+  ),
+}
+
 export const colorVariants = {
   light: buildVars(lightElements),
   dark: buildVars(darkElements),
@@ -50,18 +68,23 @@ export const colorVariants = {
 
 export const useColor = (color: keyof typeof mergedLightColors) => {
   const { colorScheme } = useColorScheme()
-  const colors = mergedColors[colorScheme || 'light']
-  return useMemo(() => rgbStringToRgb(colors[color]), [color, colors])
+  const colors = mergedColorsHex[colorScheme || 'light']
+  return useMemo(() => colors[color], [color, colors])
 }
 
-export const useColors = () => {
+export const useColorsVariants = () => {
   const { colorScheme } = useColorScheme()
   return mergedColors[colorScheme || 'light']
 }
 
-export const useCurrentColors = () => {
+export const useColors = () => {
+  const { colorScheme } = useColorScheme()
+  return mergedColorsHex[colorScheme || 'light']
+}
+
+export const useCurrentColorsVariants = () => {
   useColorScheme() // Observe color scheme changes
-  return getCurrentColors()
+  return getCurrentColorsVariants()
 }
 
 export type Colors = typeof mergedLightColors
