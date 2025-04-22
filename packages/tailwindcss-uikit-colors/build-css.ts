@@ -1,88 +1,153 @@
-import {
-  darkElements,
-  darkPalette,
-  lightElements,
-  lightPalette,
-} from 'apple-uikit-colors'
-import fs from 'node:fs'
-const cssTargets = {
-  mediaQuery: './src/media.css',
-  selector: './src/selector.css',
-}
+import * as iosColors from 'apple-uikit-colors'
+import * as macOSColors from 'apple-uikit-colors/macos'
+import fs from 'fs/promises'
 
-const cssVariantPrefix = '--color'
-
-const cleanupTargets = () => {
-  fs.unlinkSync(cssTargets.mediaQuery)
-  fs.unlinkSync(cssTargets.selector)
-}
-
-const buildCSSVars = (...vars: Record<string, string>[]) => {
-  const cssVars = {} as Record<`${typeof cssVariantPrefix}-${string}`, string>
-  for (const v of vars) {
-    for (const [key, value] of Object.entries(v)) {
-      cssVars[`${cssVariantPrefix}-${key}`] = value
+import { format } from 'prettier'
+const buildCSSPreset = async (
+  colors: {
+    palette: {
+      light: Record<string, string>
+      dark: Record<string, string>
     }
-  }
-  return cssVars
-}
+    elements: {
+      light: Record<string, string>
+      dark: Record<string, string>
+    }
+  },
 
-const lightCSSVars = buildCSSVars(lightPalette, lightElements)
-const darkCSSVars = buildCSSVars(darkPalette, darkElements)
-
-const generateCSS = (
-  vars: Record<`${typeof cssVariantPrefix}-${string}`, string>,
-  className: string = ':root',
-  withMediaQuery?: 'dark' | 'light',
+  target: {
+    mediaQuery: string
+    selector: string
+  },
 ) => {
-  const body = `${className} {
-    ${Object.entries(vars)
-      .map(([key, value]) => `${key}: ${value};`)
-      .join('\n')}
-  }`
+  const { palette, elements } = colors
+  const darkElements = elements.dark
+  const lightElements = elements.light
+  const darkPalette = palette.dark
+  const lightPalette = palette.light
 
-  if (withMediaQuery) {
-    return `@media (prefers-color-scheme: ${withMediaQuery}) {
-      ${body}
-    }`
+  const cssTargets = target
+
+  const cssVariantPrefix = '--color'
+
+  const cleanupTargets = async () => {
+    try {
+      await Promise.all([
+        fs.unlink(cssTargets.mediaQuery),
+        fs.unlink(cssTargets.selector),
+      ])
+    } catch (e) {}
   }
 
-  return body
+  const buildCSSVars = (...vars: Record<string, string>[]) => {
+    const cssVars = {} as Record<`${typeof cssVariantPrefix}-${string}`, string>
+    for (const v of vars) {
+      for (const [key, value] of Object.entries(v)) {
+        cssVars[`${cssVariantPrefix}-${key}`] = value
+      }
+    }
+    return cssVars
+  }
+
+  const lightCSSVars = buildCSSVars(lightPalette, lightElements)
+  const darkCSSVars = buildCSSVars(darkPalette, darkElements)
+
+  const generateCSS = (
+    vars: Record<`${typeof cssVariantPrefix}-${string}`, string>,
+    className: string = ':root',
+    withMediaQuery?: 'dark' | 'light',
+  ) => {
+    const body = `${className} {
+      ${Object.entries(vars)
+        .map(([key, value]) => `${key}: ${value};`)
+        .join('\n')}
+    }`
+
+    if (withMediaQuery) {
+      return `@media (prefers-color-scheme: ${withMediaQuery}) {
+        ${body}
+      }`
+    }
+
+    return body
+  }
+
+  const elementsCSS = generateCSS(lightCSSVars, 'html')
+  const lightElementsSelectorCSS = generateCSS(
+    lightCSSVars,
+    'html[data-theme="light"]',
+  )
+  const darkElementsSelectorCSS = generateCSS(
+    darkCSSVars,
+    'html[data-theme="dark"]',
+  )
+
+  const lightElementsMediaCSS = generateCSS(lightCSSVars, 'html', 'light')
+  const darkElementsMediaCSS = generateCSS(darkCSSVars, 'html', 'dark')
+
+  const mergeCSS = (...css: string[]) => {
+    return css.join('\n')
+  }
+
+  const writeCSS = async (css: string, path: string) => {
+    await fs.writeFile(path, await format(css, { parser: 'css' }), {
+      flag: 'a+',
+    })
+  }
+
+  cleanupTargets()
+  await writeCSS(
+    mergeCSS(
+      elementsCSS,
+      lightElementsSelectorCSS,
+      darkElementsSelectorCSS,
+      lightElementsMediaCSS,
+      darkElementsMediaCSS,
+    ),
+    cssTargets.selector,
+  )
+  await writeCSS(
+    mergeCSS(lightElementsMediaCSS, darkElementsMediaCSS),
+    cssTargets.mediaQuery,
+  )
 }
 
-const elementsCSS = generateCSS(lightCSSVars, 'html')
-const lightElementsSelectorCSS = generateCSS(
-  lightCSSVars,
-  'html[data-theme="light"]',
-)
-const darkElementsSelectorCSS = generateCSS(
-  darkCSSVars,
-  'html[data-theme="dark"]',
-)
+async function build() {
+  {
+    const { darkElements, darkPalette, lightElements, lightPalette } = iosColors
+    await buildCSSPreset(
+      {
+        palette: {
+          light: lightPalette,
+          dark: darkPalette,
+        },
+        elements: { light: lightElements, dark: darkElements },
+      },
+      {
+        mediaQuery: './src/media.css',
+        selector: './src/selector.css',
+      },
+    )
+  }
 
-const lightElementsMediaCSS = generateCSS(lightCSSVars, 'html', 'light')
-const darkElementsMediaCSS = generateCSS(darkCSSVars, 'html', 'dark')
-
-const mergeCSS = (...css: string[]) => {
-  return css.join('\n')
+  {
+    const { darkElements, darkPalette, lightElements, lightPalette } =
+      macOSColors
+    await fs.mkdir('./src/macos', { recursive: true })
+    await buildCSSPreset(
+      {
+        palette: {
+          light: lightPalette,
+          dark: darkPalette,
+        },
+        elements: { light: lightElements, dark: darkElements },
+      },
+      {
+        mediaQuery: './src/macos/media.css',
+        selector: './src/macos/selector.css',
+      },
+    )
+  }
 }
 
-const writeCSS = (css: string, path: string) => {
-  fs.writeFileSync(path, css, { flag: 'a+' })
-}
-
-cleanupTargets()
-writeCSS(
-  mergeCSS(
-    elementsCSS,
-    lightElementsSelectorCSS,
-    darkElementsSelectorCSS,
-    lightElementsMediaCSS,
-    darkElementsMediaCSS,
-  ),
-  cssTargets.selector,
-)
-writeCSS(
-  mergeCSS(lightElementsMediaCSS, darkElementsMediaCSS),
-  cssTargets.mediaQuery,
-)
+build()

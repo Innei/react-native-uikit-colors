@@ -1,5 +1,5 @@
 {
-  "name": "apple-ios-uikit-colors",
+  "name": "apple-uikit-colors",
   "version": "0.3.10",
   "description": "Apple UIKit Colors",
   "publishConfig": {
@@ -10,6 +10,10 @@
       ".": {
         "require": "./dist/index.cjs",
         "import": "./dist/index.js"
+      },
+      "./macos": {
+        "require": "./dist/macos.cjs",
+        "import": "./dist/macos.js"
       }
     }
   },

@@ -6,7 +6,10 @@
     "./tailwind": "./src/tailwind.ts",
     "./media.css": "./src/media.css",
     "./selector.css": "./src/selector.css",
-    ".": "./src/tailwind.ts"
+    ".": "./src/tailwind.ts",
+    "./macos": "./src/macos/tailwind.ts",
+    "./macos/media.css": "./src/macos/media.css",
+    "./macos/selector.css": "./src/macos/selector.css"
   },
   "main": "./src/tailwind.ts",
   "scripts": {
@@ -22,10 +25,11 @@
   "author": "Innei",
   "license": "MIT",
   "dependencies": {
-    "apple-ios-uikit-colors": "workspace:*"
+    "apple-uikit-colors": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "22.13.4",
+    "@types/node": "22.14.1",
+    "prettier": "3.5.3",
     "tailwindcss": "^3.4.11",
     "tsdown": "0.9.3",
     "tsx": "4.19.0"

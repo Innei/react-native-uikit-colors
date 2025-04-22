@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsdown'
 
 export default defineConfig({
-  entry: ['index.ts'],
+  entry: ['index.ts', 'macos.ts'],
   outDir: 'dist',
   format: ['esm', 'cjs'],
   dts: true,

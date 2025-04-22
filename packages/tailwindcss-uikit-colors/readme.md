@@ -12,6 +12,8 @@ npm install tailwindcss-uikit-colors
 
 ```ts
 import { withUIKit } from 'tailwindcss-uikit-colors'
+// or
+import { withUIKit } from 'tailwindcss-uikit-colors/macos'
 
 export default withUIKit({
   // your existing tailwind config
@@ -26,6 +28,17 @@ Then import the colors CSS in your `main.css`:
 /*
   or
   @import 'tailwindcss-uikit-colors/media.css'
+*/
+```
+
+Or macOS:
+
+```css
+@import 'tailwindcss-uikit-colors/macos/selector.css'
+
+/*
+  or
+  @import 'tailwindcss-uikit-colors/macos/media.css'
 */
 ```
 
