@@ -1,5 +1,5 @@
 {
-  "name": "apple-uikit-colors",
+  "name": "apple-ios-uikit-colors",
   "version": "0.3.10",
   "description": "Apple UIKit Colors",
   "publishConfig": {
@@ -16,7 +16,7 @@
   "main": "./index.ts",
   "type": "module",
   "scripts": {
-    "build": "tsup"
+    "build": "tsdown"
   },
   "keywords": [
     "apple",
@@ -26,6 +26,6 @@
   "author": "Innei",
   "license": "MIT",
   "devDependencies": {
-    "tsup": "8.3.5"
+    "tsdown": "0.9.3"
   }
 }

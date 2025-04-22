@@ -26,7 +26,7 @@
     "readme.md"
   ],
   "scripts": {
-    "build": "tsup"
+    "build": "tsdown"
   },
   "keywords": [
     "react-native",
@@ -40,7 +40,7 @@
     "ios"
   ],
   "dependencies": {
-    "apple-uikit-colors": "workspace:*",
+    "apple-ios-uikit-colors": "workspace:*",
     "tailwindcss-uikit-colors": "workspace:*"
   },
   "peerDependencies": {
@@ -52,8 +52,8 @@
   "author": "Innei",
   "license": "MIT",
   "devDependencies": {
-    "tsup": "8.3.5",
-    "usehooks-ts": "3.1.0",
-    "@types/react": "18.3.12"
+    "@types/react": "18.3.12",
+    "tsdown": "0.9.3",
+    "usehooks-ts": "3.1.0"
   }
 }

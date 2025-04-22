@@ -22,11 +22,12 @@
   "author": "Innei",
   "license": "MIT",
   "dependencies": {
-    "apple-uikit-colors": "workspace:*"
+    "apple-ios-uikit-colors": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "22.13.4",
     "tailwindcss": "^3.4.11",
+    "tsdown": "0.9.3",
     "tsx": "4.19.0"
   }
 }
