@@ -1,19 +1,53 @@
 import { Config } from 'tailwindcss'
-
+import defaultColors from 'tailwindcss/colors'
 const configColors = {
-  red: 'rgb(var(--color-red) / <alpha-value>)',
-  orange: 'rgb(var(--color-orange) / <alpha-value>)',
-  yellow: 'rgb(var(--color-yellow) / <alpha-value>)',
-  green: 'rgb(var(--color-green) / <alpha-value>)',
+  red: {
+    ...defaultColors.red,
+    DEFAULT: 'rgb(var(--color-red) / <alpha-value>)',
+  },
+  orange: {
+    ...defaultColors.orange,
+    DEFAULT: 'rgb(var(--color-orange) / <alpha-value>)',
+  },
+  yellow: {
+    ...defaultColors.yellow,
+    DEFAULT: 'rgb(var(--color-yellow) / <alpha-value>)',
+  },
+  green: {
+    ...defaultColors.green,
+    DEFAULT: 'rgb(var(--color-green) / <alpha-value>)',
+  },
   mint: 'rgb(var(--color-mint) / <alpha-value>)',
-  teal: 'rgb(var(--color-teal) / <alpha-value>)',
-  cyan: 'rgb(var(--color-cyan) / <alpha-value>)',
-  blue: 'rgb(var(--color-blue) / <alpha-value>)',
-  indigo: 'rgb(var(--color-indigo) / <alpha-value>)',
-  purple: 'rgb(var(--color-purple) / <alpha-value>)',
-  pink: 'rgb(var(--color-pink) / <alpha-value>)',
+  teal: {
+    ...defaultColors.teal,
+    DEFAULT: 'rgb(var(--color-teal) / <alpha-value>)',
+  },
+  cyan: {
+    ...defaultColors.cyan,
+    DEFAULT: 'rgb(var(--color-cyan) / <alpha-value>)',
+  },
+  blue: {
+    ...defaultColors.blue,
+    DEFAULT: 'rgb(var(--color-blue) / <alpha-value>)',
+  },
+  indigo: {
+    ...defaultColors.indigo,
+    DEFAULT: 'rgb(var(--color-indigo) / <alpha-value>)',
+  },
+  purple: {
+    ...defaultColors.purple,
+    DEFAULT: 'rgb(var(--color-purple) / <alpha-value>)',
+  },
+  pink: {
+    ...defaultColors.pink,
+    DEFAULT: 'rgb(var(--color-pink) / <alpha-value>)',
+  },
   brown: 'rgb(var(--color-brown) / <alpha-value>)',
-  gray: 'rgb(var(--color-gray) / <alpha-value>)',
+  gray: {
+    ...defaultColors.gray,
+    DEFAULT: 'rgb(var(--color-gray) / <alpha-value>)',
+  },
+
   fill: 'rgb(var(--color-fill) / <alpha-value>)',
   'fill-secondary': 'rgb(var(--color-fillSecondary) / <alpha-value>)',
   'fill-tertiary': 'rgb(var(--color-fillTertiary) / <alpha-value>)',
