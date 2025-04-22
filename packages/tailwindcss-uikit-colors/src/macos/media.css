@@ -40,6 +40,17 @@
     --color-materialUltraThin: 246 246 246 0.36;
     --color-controlEnabled: 251 251 251;
     --color-controlDisabled: 243 243 243;
+    --color-menu: 40 40 40 0.58;
+    --color-popover: 0 0 0 0.28;
+    --color-titlebar: 234 234 234 0.8;
+    --color-sidebar: 234 234 234 0.84;
+    --color-selectionFocused: 10 130 255 0.75;
+    --color-selectionFocusedFill: 10 130 255;
+    --color-selectionUnfocused: 0 0 0 0.1;
+    --color-selectionUnfocusedFill: 246 246 246 0.84;
+    --color-headerView: 255 255 255 0.8;
+    --color-tooltip: 246 246 246 0.6;
+    --color-underWindowBackground: 246 246 246 0.84;
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -84,5 +95,16 @@
     --color-materialUltraThin: 40 40 40 0.36;
     --color-controlEnabled: 255 255 255 0.2;
     --color-controlDisabled: 255 255 255 0.1;
+    --color-menu: 246 246 246 0.72;
+    --color-popover: 246 246 246 0.6;
+    --color-titlebar: 60 60 60 0.8;
+    --color-sidebar: 0 0 0 0.45;
+    --color-selectionFocused: 10 130 255 0.75;
+    --color-selectionFocusedFill: 10 130 255;
+    --color-selectionUnfocused: 255 255 255 0.1;
+    --color-selectionUnfocusedFill: 40 40 40 0.65;
+    --color-headerView: 30 30 30 0.8;
+    --color-tooltip: 0 0 0 0.35;
+    --color-underWindowBackground: 0 0 0 0.45;
   }
 }

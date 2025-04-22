@@ -50,6 +50,20 @@ const configColors = {
   'material-ultra-thin': 'rgb(var(--color-materialUltraThin) / <alpha-value>)',
   'control-enabled': 'rgb(var(--color-controlEnabled) / <alpha-value>)',
   'control-disabled': 'rgb(var(--color-controlDisabled) / <alpha-value>)',
+  menu: 'rgb(var(--color-menu) / <alpha-value>)',
+  popover: 'rgb(var(--color-popover) / <alpha-value>)',
+  titlebar: 'rgb(var(--color-titlebar) / <alpha-value>)',
+  sidebar: 'rgb(var(--color-sidebar) / <alpha-value>)',
+  'selection-focused': 'rgb(var(--color-selectionFocused) / <alpha-value>)',
+  'selection-focused-fill':
+    'rgb(var(--color-selectionFocusedFill) / <alpha-value>)',
+  'selection-unfocused': 'rgb(var(--color-selectionUnfocused) / <alpha-value>)',
+  'selection-unfocused-fill':
+    'rgb(var(--color-selectionUnfocusedFill) / <alpha-value>)',
+  'header-view': 'rgb(var(--color-headerView) / <alpha-value>)',
+  tooltip: 'rgb(var(--color-tooltip) / <alpha-value>)',
+  'under-window-background':
+    'rgb(var(--color-underWindowBackground) / <alpha-value>)',
 }
 export const withUIKit = (config: Config) => {
   config.theme = config.theme || {}

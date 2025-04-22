@@ -72,6 +72,18 @@ const lightElementsHex = {
   // Control
   controlEnabled: '#FBFBFB',
   controlDisabled: '#F3F3F3',
+
+  menu: addAlphaToHex('#282828', 0.58),
+  popover: addAlphaToHex('#000000', 0.28),
+  titlebar: addAlphaToHex('#EAEAEA', 0.8),
+  sidebar: addAlphaToHex('#EAEAEA', 0.84),
+  selectionFocused: addAlphaToHex('#0A82FF', 0.75),
+  selectionFocusedFill: '#0A82FF',
+  selectionUnfocused: addAlphaToHex('#000000', 0.1),
+  selectionUnfocusedFill: addAlphaToHex('#f6f6f6', 0.84),
+  headerView: addAlphaToHex('#ffffff', 0.8),
+  tooltip: addAlphaToHex('#f6f6f6', 0.6),
+  underWindowBackground: addAlphaToHex('#f6f6f6', 0.84),
 }
 export const lightElements = mapHexObjectToRGBString(lightElementsHex)
 const darkElementsHex = {
@@ -112,5 +124,17 @@ const darkElementsHex = {
   // Control
   controlEnabled: addAlphaToHex('#FFFFFF', 0.2),
   controlDisabled: addAlphaToHex('#FFFFFF', 0.1),
+
+  menu: addAlphaToHex('#f6f6f6', 0.72),
+  popover: addAlphaToHex('#f6f6f6', 0.6),
+  titlebar: addAlphaToHex('#3C3C3C', 0.8),
+  sidebar: addAlphaToHex('#000000', 0.45),
+  selectionFocused: addAlphaToHex('#0A82FF', 0.75),
+  selectionFocusedFill: '#0A82FF',
+  selectionUnfocused: addAlphaToHex('#FFFFFF', 0.1),
+  selectionUnfocusedFill: addAlphaToHex('#282828', 0.65),
+  headerView: addAlphaToHex('#1E1E1E', 0.8),
+  tooltip: addAlphaToHex('#000000', 0.35),
+  underWindowBackground: addAlphaToHex('#000000', 0.45),
 }
 export const darkElements = mapHexObjectToRGBString(darkElementsHex)
