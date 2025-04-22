@@ -16,7 +16,7 @@ export const mapHexToRGBString = (hex: string) => {
     hexWithoutHash.slice(2, 4),
     16,
   )} ${parseInt(hexWithoutHash.slice(4, 6), 16)}${
-    alpha === 1 ? '' : ` ${alpha.toFixed(2)}`
+    alpha === 1 ? '' : ` / ${alpha.toFixed(2)}`
   }`
 }
 

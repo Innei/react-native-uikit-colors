@@ -70,8 +70,8 @@ const lightElementsHex = {
   materialUltraThin: addAlphaToHex('#F6F6F6', 0.36),
 
   // Control
-  controlEnabled: '#FBFBFB',
-  controlDisabled: '#F3F3F3',
+  controlEnabled: addAlphaToHex('#FBFBFB', 1),
+  controlDisabled: addAlphaToHex('#F3F3F3', 1),
 
   menu: addAlphaToHex('#282828', 0.58),
   popover: addAlphaToHex('#000000', 0.28),

@@ -1,5 +1,6 @@
 import { Config } from 'tailwindcss'
 import defaultColors from 'tailwindcss/colors'
+
 const configColors = {
   red: {
     ...defaultColors.red,
@@ -48,11 +49,11 @@ const configColors = {
     DEFAULT: 'rgb(var(--color-gray) / <alpha-value>)',
   },
 
-  fill: 'rgb(var(--color-fill) / <alpha-value>)',
-  'fill-secondary': 'rgb(var(--color-fillSecondary) / <alpha-value>)',
-  'fill-tertiary': 'rgb(var(--color-fillTertiary) / <alpha-value>)',
-  'fill-quaternary': 'rgb(var(--color-fillQuaternary) / <alpha-value>)',
-  'fill-quinary': 'rgb(var(--color-fillQuinary) / <alpha-value>)',
+  fill: 'rgba(var(--color-fill))',
+  'fill-secondary': 'rgba(var(--color-fillSecondary))',
+  'fill-tertiary': 'rgba(var(--color-fillTertiary))',
+  'fill-quaternary': 'rgba(var(--color-fillQuaternary))',
+  'fill-quinary': 'rgba(var(--color-fillQuinary))',
   'fill-vibrant': 'rgb(var(--color-fillVibrant) / <alpha-value>)',
   'fill-vibrant-secondary':
     'rgb(var(--color-fillVibrantSecondary) / <alpha-value>)',
@@ -62,11 +63,11 @@ const configColors = {
     'rgb(var(--color-fillVibrantQuaternary) / <alpha-value>)',
   'fill-vibrant-quinary':
     'rgb(var(--color-fillVibrantQuinary) / <alpha-value>)',
-  text: 'rgb(var(--color-text) / <alpha-value>)',
-  'text-secondary': 'rgb(var(--color-textSecondary) / <alpha-value>)',
-  'text-tertiary': 'rgb(var(--color-textTertiary) / <alpha-value>)',
-  'text-quaternary': 'rgb(var(--color-textQuaternary) / <alpha-value>)',
-  'text-quinary': 'rgb(var(--color-textQuinary) / <alpha-value>)',
+  text: 'rgba(var(--color-text))',
+  'text-secondary': 'rgba(var(--color-textSecondary))',
+  'text-tertiary': 'rgba(var(--color-textTertiary))',
+  'text-quaternary': 'rgba(var(--color-textQuaternary))',
+  'text-quinary': 'rgba(var(--color-textQuinary))',
   'text-vibrant': 'rgb(var(--color-textVibrant) / <alpha-value>)',
   'text-vibrant-secondary':
     'rgb(var(--color-textVibrantSecondary) / <alpha-value>)',
@@ -76,28 +77,25 @@ const configColors = {
     'rgb(var(--color-textVibrantQuaternary) / <alpha-value>)',
   'text-vibrant-quinary':
     'rgb(var(--color-textVibrantQuinary) / <alpha-value>)',
-  'material-ultra-thick':
-    'rgb(var(--color-materialUltraThick) / <alpha-value>)',
-  'material-thick': 'rgb(var(--color-materialThick) / <alpha-value>)',
-  'material-medium': 'rgb(var(--color-materialMedium) / <alpha-value>)',
-  'material-thin': 'rgb(var(--color-materialThin) / <alpha-value>)',
-  'material-ultra-thin': 'rgb(var(--color-materialUltraThin) / <alpha-value>)',
-  'control-enabled': 'rgb(var(--color-controlEnabled) / <alpha-value>)',
-  'control-disabled': 'rgb(var(--color-controlDisabled) / <alpha-value>)',
-  menu: 'rgb(var(--color-menu) / <alpha-value>)',
-  popover: 'rgb(var(--color-popover) / <alpha-value>)',
-  titlebar: 'rgb(var(--color-titlebar) / <alpha-value>)',
-  sidebar: 'rgb(var(--color-sidebar) / <alpha-value>)',
-  'selection-focused': 'rgb(var(--color-selectionFocused) / <alpha-value>)',
+  'material-ultra-thick': 'rgba(var(--color-materialUltraThick))',
+  'material-thick': 'rgba(var(--color-materialThick))',
+  'material-medium': 'rgba(var(--color-materialMedium))',
+  'material-thin': 'rgba(var(--color-materialThin))',
+  'material-ultra-thin': 'rgba(var(--color-materialUltraThin))',
+  'control-enabled': 'rgba(var(--color-controlEnabled))',
+  'control-disabled': 'rgba(var(--color-controlDisabled))',
+  menu: 'rgba(var(--color-menu))',
+  popover: 'rgba(var(--color-popover))',
+  titlebar: 'rgba(var(--color-titlebar))',
+  sidebar: 'rgba(var(--color-sidebar))',
+  'selection-focused': 'rgba(var(--color-selectionFocused))',
   'selection-focused-fill':
     'rgb(var(--color-selectionFocusedFill) / <alpha-value>)',
-  'selection-unfocused': 'rgb(var(--color-selectionUnfocused) / <alpha-value>)',
-  'selection-unfocused-fill':
-    'rgb(var(--color-selectionUnfocusedFill) / <alpha-value>)',
-  'header-view': 'rgb(var(--color-headerView) / <alpha-value>)',
-  tooltip: 'rgb(var(--color-tooltip) / <alpha-value>)',
-  'under-window-background':
-    'rgb(var(--color-underWindowBackground) / <alpha-value>)',
+  'selection-unfocused': 'rgba(var(--color-selectionUnfocused))',
+  'selection-unfocused-fill': 'rgba(var(--color-selectionUnfocusedFill))',
+  'header-view': 'rgba(var(--color-headerView))',
+  tooltip: 'rgba(var(--color-tooltip))',
+  'under-window-background': 'rgba(var(--color-underWindowBackground))',
 }
 export const withUIKit = (config: Config) => {
   config.theme = config.theme || {}

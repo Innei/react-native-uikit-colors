@@ -41,9 +41,9 @@ export const darkPalette = {
 
 export const lightElements = {
   placeholderText: '199 199 204',
-  separator: '84 84 86 0.34',
+  separator: '84 84 86 / 0.34',
   opaqueSeparator: '198 198 200',
-  nonOpaqueSeparator: '84 84 86 0.34',
+  nonOpaqueSeparator: '84 84 86 / 0.34',
   link: '0 122 255',
 
   systemBackground: '255 255 255',
@@ -56,23 +56,23 @@ export const lightElements = {
   tertiarySystemGroupedBackground: '242 242 247',
 
   // System Colors
-  systemFill: '120 120 128 0.2',
-  secondarySystemFill: '120 120 128 0.16',
-  tertiarySystemFill: '120 120 128 0.12',
-  quaternarySystemFill: '120 120 128 0.08',
+  systemFill: '120 120 128 / 0.2',
+  secondarySystemFill: '120 120 128 / 0.16',
+  tertiarySystemFill: '120 120 128 / 0.12',
+  quaternarySystemFill: '120 120 128 / 0.08',
 
   // Text Colors
   label: '0 0 0',
   text: '0 0 0',
-  secondaryLabel: '60 60 67 0.6',
-  tertiaryLabel: '60 60 67 0.3',
-  quaternaryLabel: '60 60 67 0.18',
+  secondaryLabel: '60 60 67 / 0.6',
+  tertiaryLabel: '60 60 67 / 0.3',
+  quaternaryLabel: '60 60 67 / 0.18',
 }
 export const darkElements = {
   placeholderText: '122 122 122',
-  separator: '84 84 86 0.6',
+  separator: '84 84 86 / 0.6',
   opaqueSeparator: '56 56 58',
-  nonOpaqueSeparator: '84 84 86 0.6',
+  nonOpaqueSeparator: '84 84 86 / 0.6',
   link: '10 132 255',
   systemBackground: '0 0 0',
   secondarySystemBackground: '28 28 30',
@@ -84,15 +84,15 @@ export const darkElements = {
   tertiarySystemGroupedBackground: '44 44 46',
 
   // System Colors
-  systemFill: '120 120 128 0.36',
-  secondarySystemFill: '120 120 128 0.32',
-  tertiarySystemFill: '120 120 128 0.24',
-  quaternarySystemFill: '120 120 128 0.19',
+  systemFill: '120 120 128 / 0.36',
+  secondarySystemFill: '120 120 128 / 0.32',
+  tertiarySystemFill: '120 120 128 / 0.24',
+  quaternarySystemFill: '120 120 128 / 0.19',
 
   // Text Colors
   label: '255 255 255',
   text: '255 255 255',
-  secondaryLabel: '235 235 245 0.6',
-  tertiaryLabel: '235 235 245 0.3',
-  quaternaryLabel: '235 235 245 0.18',
+  secondaryLabel: '235 235 245 / 0.6',
+  tertiaryLabel: '235 235 245 / 0.3',
+  quaternaryLabel: '235 235 245 / 0.18',
 }
