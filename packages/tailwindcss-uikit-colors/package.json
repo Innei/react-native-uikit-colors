@@ -10,7 +10,7 @@
     "./macos": "./src/macos/tailwind.ts",
     "./macos/media.css": "./src/macos/media.css",
     "./macos/selector.css": "./src/macos/selector.css",
-    "./src/macos/tailwind.ts": "./src/macos/tailwind.ts",
+    "./src/macos/tailwind": "./src/macos/tailwind.ts",
     "./src/macos/media.css": "./src/macos/media.css",
     "./src/macos/selector.css": "./src/macos/selector.css"
   },
