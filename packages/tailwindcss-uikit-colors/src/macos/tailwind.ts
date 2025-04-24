@@ -82,6 +82,7 @@ const configColors = {
   'material-medium': 'rgba(var(--color-materialMedium))',
   'material-thin': 'rgba(var(--color-materialThin))',
   'material-ultra-thin': 'rgba(var(--color-materialUltraThin))',
+  'material-opaque': 'rgb(var(--color-materialOpaque) / <alpha-value>)',
   'control-enabled': 'rgba(var(--color-controlEnabled))',
   'control-disabled': 'rgba(var(--color-controlDisabled))',
   menu: 'rgba(var(--color-menu))',

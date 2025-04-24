@@ -68,6 +68,7 @@ const lightElementsHex = {
   materialMedium: addAlphaToHex('#F6F6F6', 0.6),
   materialThin: addAlphaToHex('#F6F6F6', 0.48),
   materialUltraThin: addAlphaToHex('#F6F6F6', 0.36),
+  materialOpaque: '#F6F6F6',
 
   // Control
   controlEnabled: addAlphaToHex('#FBFBFB', 1),
@@ -120,7 +121,7 @@ const darkElementsHex = {
   materialMedium: addAlphaToHex('#282828', 0.6),
   materialThin: addAlphaToHex('#282828', 0.48),
   materialUltraThin: addAlphaToHex('#282828', 0.36),
-
+  materialOpaque: '#282828',
   // Control
   controlEnabled: addAlphaToHex('#FFFFFF', 0.2),
   controlDisabled: addAlphaToHex('#FFFFFF', 0.1),

@@ -37,6 +37,7 @@ html {
   --color-materialMedium: 246 246 246 / 0.6;
   --color-materialThin: 246 246 246 / 0.48;
   --color-materialUltraThin: 246 246 246 / 0.36;
+  --color-materialOpaque: 246 246 246;
   --color-controlEnabled: 251 251 251;
   --color-controlDisabled: 243 243 243;
   --color-menu: 40 40 40 / 0.58;
@@ -90,6 +91,7 @@ html[data-theme="light"] {
   --color-materialMedium: 246 246 246 / 0.6;
   --color-materialThin: 246 246 246 / 0.48;
   --color-materialUltraThin: 246 246 246 / 0.36;
+  --color-materialOpaque: 246 246 246;
   --color-controlEnabled: 251 251 251;
   --color-controlDisabled: 243 243 243;
   --color-menu: 40 40 40 / 0.58;
@@ -143,6 +145,7 @@ html[data-theme="dark"] {
   --color-materialMedium: 40 40 40 / 0.6;
   --color-materialThin: 40 40 40 / 0.48;
   --color-materialUltraThin: 40 40 40 / 0.36;
+  --color-materialOpaque: 40 40 40;
   --color-controlEnabled: 255 255 255 / 0.2;
   --color-controlDisabled: 255 255 255 / 0.1;
   --color-menu: 246 246 246 / 0.72;
@@ -197,6 +200,7 @@ html[data-theme="dark"] {
     --color-materialMedium: 246 246 246 / 0.6;
     --color-materialThin: 246 246 246 / 0.48;
     --color-materialUltraThin: 246 246 246 / 0.36;
+    --color-materialOpaque: 246 246 246;
     --color-controlEnabled: 251 251 251;
     --color-controlDisabled: 243 243 243;
     --color-menu: 40 40 40 / 0.58;
@@ -252,6 +256,7 @@ html[data-theme="dark"] {
     --color-materialMedium: 40 40 40 / 0.6;
     --color-materialThin: 40 40 40 / 0.48;
     --color-materialUltraThin: 40 40 40 / 0.36;
+    --color-materialOpaque: 40 40 40;
     --color-controlEnabled: 255 255 255 / 0.2;
     --color-controlDisabled: 255 255 255 / 0.1;
     --color-menu: 246 246 246 / 0.72;
