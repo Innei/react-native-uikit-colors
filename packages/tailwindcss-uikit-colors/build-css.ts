@@ -49,8 +49,34 @@ const buildCSSPreset = async (
     return cssVars
   }
 
+  const buildFixedCSSVars = (
+    lightVars: Record<string, string>[],
+    darkVars: Record<string, string>[],
+  ) => {
+    const cssVars = {} as Record<`${typeof cssVariantPrefix}-${string}`, string>
+
+    for (const v of lightVars) {
+      for (const [key, value] of Object.entries(v)) {
+        cssVars[`${cssVariantPrefix}-${key}-light`] = value
+      }
+    }
+
+    for (const v of darkVars) {
+      for (const [key, value] of Object.entries(v)) {
+        cssVars[`${cssVariantPrefix}-${key}-dark`] = value
+      }
+    }
+
+    return cssVars
+  }
+
   const lightCSSVars = buildCSSVars(lightPalette, lightElements)
   const darkCSSVars = buildCSSVars(darkPalette, darkElements)
+
+  const fixedCSSVars = buildFixedCSSVars(
+    [lightPalette, lightElements],
+    [darkPalette, darkElements],
+  )
 
   const generateCSS = (
     vars: Record<`${typeof cssVariantPrefix}-${string}`, string>,
@@ -85,6 +111,8 @@ const buildCSSPreset = async (
   const lightElementsMediaCSS = generateCSS(lightCSSVars, 'html', 'light')
   const darkElementsMediaCSS = generateCSS(darkCSSVars, 'html', 'dark')
 
+  const fixedElementsCSS = generateCSS(fixedCSSVars, 'html')
+
   const mergeCSS = (...css: string[]) => {
     return css.join('\n')
   }
@@ -98,6 +126,7 @@ const buildCSSPreset = async (
   cleanupTargets()
   await writeCSS(
     mergeCSS(
+      fixedElementsCSS,
       elementsCSS,
       lightElementsSelectorCSS,
       darkElementsSelectorCSS,
@@ -107,12 +136,12 @@ const buildCSSPreset = async (
     cssTargets.selector,
   )
   await writeCSS(
-    mergeCSS(lightElementsMediaCSS, darkElementsMediaCSS),
+    mergeCSS(fixedElementsCSS, lightElementsMediaCSS, darkElementsMediaCSS),
     cssTargets.mediaQuery,
   )
 }
 
-async function build() {
+export async function build() {
   {
     const { darkElements, darkPalette, lightElements, lightPalette } = iosColors
     await buildCSSPreset(
@@ -150,4 +179,7 @@ async function build() {
   }
 }
 
-build()
+// 当直接运行此文件时执行构建
+if (require.main === module) {
+  build().catch(console.error)
+}

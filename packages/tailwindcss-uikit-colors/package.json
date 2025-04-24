@@ -16,7 +16,9 @@
   },
   "main": "./src/tailwind.ts",
   "scripts": {
-    "build": "tsx build-css.ts"
+    "build": "tsx build.ts",
+    "build:css": "tsx build-css.ts",
+    "build:tailwind": "tsx generate-tailwind-config.ts"
   },
   "keywords": [
     "tailwindcss",

@@ -1,0 +1,234 @@
+import fs from 'fs/promises'
+import path from 'path'
+import * as iosColors from 'apple-uikit-colors'
+import * as macOSColors from 'apple-uikit-colors/macos'
+import { format } from 'prettier'
+import defaultColors from 'tailwindcss/colors'
+type ThemeType = 'ios' | 'macos'
+
+/**
+ * 生成Tailwind配置文件
+ * 此函数为每个平台(iOS/macOS)创建一个tailwind配置文件
+ * 包括常规颜色变量和固定的深色/浅色变量
+ */
+export async function generateTailwindConfig() {
+  await generateConfigForPlatform('ios', iosColors)
+  await generateConfigForPlatform('macos', macOSColors)
+}
+
+/**
+ * 判断颜色值是否支持alpha通道
+ * 如果颜色值是三位纯数字组成（如 "84 84 86"），则支持alpha通道
+ * 如果颜色值已包含透明度（如 "120 120 128 / 0.2"），则不支持额外的alpha通道
+ */
+function supportsAlpha(colorValue: string): boolean {
+  // 检查颜色值是否只有三个数字组成
+  return /^\s*\d+\s+\d+\s+\d+\s*$/.test(colorValue)
+}
+
+/**
+ * 为特定平台生成Tailwind配置
+ */
+async function generateConfigForPlatform(platform: ThemeType, colors: any) {
+  const { darkElements, darkPalette, lightElements, lightPalette } = colors
+
+  // 合并调色板和元素颜色
+  const allLightColors = { ...lightPalette, ...lightElements }
+  const allDarkColors = { ...darkPalette, ...darkElements }
+
+  // 创建颜色配置对象
+  const configColors = generateColorConfig(allLightColors)
+
+  // 添加固定的深色/浅色变量
+  const fixedColors = generateFixedColorConfig(allLightColors, allDarkColors)
+
+  // 合并所有颜色配置
+  const combinedColors = {
+    ...configColors,
+    ...fixedColors,
+  }
+
+  // 生成完整的配置文件内容
+  // 注意：这里我们处理对象的JSON表示，确保短横线属性名使用引号
+  let configColorsStr = JSON.stringify(combinedColors, null, 2)
+    // 保留带有短横线的键名的引号
+    .replace(/"([^"-]+)":/g, '$1:') // 只替换不包含短横线的键名
+    .replace(/"/g, "'")
+    .replace(/\\'/g, "'")
+
+  const configContent = `import { Config } from 'tailwindcss'
+
+const configColors = ${configColorsStr}
+
+export const withUIKit = (config: Config) => {
+  config.theme = config.theme || {}
+  config.theme.extend = config.theme.extend || {}
+  config.theme.extend.colors = config.theme.extend.colors || {}
+  config.theme.extend.colors = {
+    ...config.theme.extend.colors,
+    ...configColors,
+  }
+  return config
+}
+
+export { configColors as colors }
+`
+
+  // 确定输出目录
+  const outputDir =
+    platform === 'ios'
+      ? path.resolve(__dirname, './src')
+      : path.resolve(__dirname, './src/macos')
+
+  // 确保目录存在
+  await fs.mkdir(outputDir, { recursive: true })
+
+  // 写入文件
+  const outputPath = path.join(outputDir, 'tailwind.ts')
+  await fs.writeFile(
+    outputPath,
+    await format(configContent, { parser: 'typescript' }),
+  )
+
+  console.log(`生成Tailwind配置: ${outputPath}`)
+}
+
+/**
+ * 根据颜色值生成对应的CSS变量引用
+ * 对于支持alpha的颜色，使用 rgb(var(--color-xxx) / <alpha-value>)
+ * 对于已包含透明度的颜色，使用 rgba(var(--color-xxx))
+ */
+function generateCssVarReference(colorKey: string, colorValue: string): string {
+  if (supportsAlpha(colorValue)) {
+    return `rgb(var(--color-${colorKey}) / <alpha-value>)`
+  } else {
+    return `rgba(var(--color-${colorKey}))`
+  }
+}
+
+/**
+ * 从颜色对象生成基本Tailwind颜色配置
+ */
+function generateColorConfig(colors: Record<string, string>) {
+  // 基本颜色配置，与示例文件类似，包含defaultColors扩展
+  const baseColors: Record<string, any> = {
+    // 调色板颜色
+    red: {
+      ...defaultColors.red,
+      DEFAULT: generateCssVarReference('red', colors.red || ''),
+    },
+    orange: {
+      ...defaultColors.orange,
+      DEFAULT: generateCssVarReference('orange', colors.orange || ''),
+    },
+    yellow: {
+      ...defaultColors.yellow,
+      DEFAULT: generateCssVarReference('yellow', colors.yellow || ''),
+    },
+    green: {
+      ...defaultColors.green,
+      DEFAULT: generateCssVarReference('green', colors.green || ''),
+    },
+    mint: generateCssVarReference('mint', colors.mint || ''),
+    teal: {
+      ...defaultColors.teal,
+      DEFAULT: generateCssVarReference('teal', colors.teal || ''),
+    },
+    cyan: {
+      ...defaultColors.cyan,
+      DEFAULT: generateCssVarReference('cyan', colors.cyan || ''),
+    },
+    blue: {
+      ...defaultColors.blue,
+      DEFAULT: generateCssVarReference('blue', colors.blue || ''),
+    },
+    indigo: {
+      ...defaultColors.indigo,
+      DEFAULT: generateCssVarReference('indigo', colors.indigo || ''),
+    },
+    purple: {
+      ...defaultColors.purple,
+      DEFAULT: generateCssVarReference('purple', colors.purple || ''),
+    },
+    pink: {
+      ...defaultColors.pink,
+      DEFAULT: generateCssVarReference('pink', colors.pink || ''),
+    },
+    brown: generateCssVarReference('brown', colors.brown || ''),
+    gray: {
+      ...defaultColors.gray,
+      DEFAULT: generateCssVarReference('gray', colors.gray || ''),
+      2: generateCssVarReference('gray2', colors.gray2 || ''),
+      3: generateCssVarReference('gray3', colors.gray3 || ''),
+      4: generateCssVarReference('gray4', colors.gray4 || ''),
+      5: generateCssVarReference('gray5', colors.gray5 || ''),
+      6: generateCssVarReference('gray6', colors.gray6 || ''),
+    },
+  }
+
+  // 从colors对象生成系统颜色配置
+  const systemColors: Record<string, string> = {}
+
+  // 将驼峰命名转为短横线命名，用于CSS变量
+  for (const [key, value] of Object.entries(colors)) {
+    if (
+      ![
+        'red',
+        'orange',
+        'yellow',
+        'green',
+        'mint',
+        'teal',
+        'cyan',
+        'blue',
+        'indigo',
+        'purple',
+        'pink',
+        'brown',
+        'gray',
+        'gray2',
+        'gray3',
+        'gray4',
+        'gray5',
+        'gray6',
+      ].includes(key)
+    ) {
+      // 转换驼峰命名为短横线命名，如systemBackground => system-background
+      const kebabKey = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+      systemColors[kebabKey] = generateCssVarReference(key, value)
+    }
+  }
+
+  return {
+    ...baseColors,
+    ...systemColors,
+  }
+}
+
+/**
+ * 生成固定的深色/浅色颜色配置
+ */
+function generateFixedColorConfig(
+  lightColors: Record<string, string>,
+  darkColors: Record<string, string>,
+) {
+  const fixedColors: Record<string, string> = {}
+
+  // 添加固定的浅色主题变量
+  for (const [key, value] of Object.entries(lightColors)) {
+    const kebabKey = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+    fixedColors[`${kebabKey}-light`] = supportsAlpha(value)
+      ? `rgb(var(--color-${key}-light) / <alpha-value>)`
+      : `rgba(var(--color-${key}-light))`
+  }
+
+  // 添加固定的深色主题变量
+  for (const [key, value] of Object.entries(darkColors)) {
+    const kebabKey = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+    fixedColors[`${kebabKey}-dark`] = supportsAlpha(value)
+      ? `rgb(var(--color-${key}-dark) / <alpha-value>)`
+      : `rgba(var(--color-${key}-dark))`
+  }
+
+  return fixedColors
+}
