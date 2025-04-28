@@ -34,10 +34,10 @@
     "apple-uikit-colors": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "22.14.1",
+    "@types/node": "22.15.3",
     "prettier": "3.5.3",
     "tailwindcss": "^3.4.11",
-    "tsdown": "0.9.3",
-    "tsx": "4.19.0"
+    "tsdown": "0.10.0",
+    "tsx": "4.19.3"
   }
 }

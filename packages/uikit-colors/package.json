@@ -30,6 +30,6 @@
   "author": "Innei",
   "license": "MIT",
   "devDependencies": {
-    "tsdown": "0.9.3"
+    "tsdown": "0.10.0"
   }
 }
