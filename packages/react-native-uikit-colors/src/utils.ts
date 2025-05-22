@@ -36,7 +36,21 @@ export const getColor = (color: keyof typeof mergedColorsDark) => {
   return rgbStringToRgb(colors[color])
 }
 
-export const rgbStringToRgb = (hex: string) => {
-  const [r, g, b, a] = hex.split(' ').map((s) => Number.parseFloat(s))
-  return `rgba(${r}, ${g}, ${b}, ${a || 1})`
+export const rgbStringToRgb = (input: string) => {
+  // 支持 'r g b / a' 或 'r g b a' 或 'r g b' 格式
+  let rgbPart = input
+  let alpha = 1
+  if (input.includes('/')) {
+    const [rgb, a] = input.split('/')
+    rgbPart = rgb.trim()
+    alpha = Number.parseFloat(a.trim())
+  } else {
+    const parts = input.trim().split(/\s+/)
+    if (parts.length === 4) {
+      alpha = Number.parseFloat(parts[3])
+      rgbPart = parts.slice(0, 3).join(' ')
+    }
+  }
+  const [r, g, b] = rgbPart.split(/\s+/).map((s) => Number.parseFloat(s))
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
